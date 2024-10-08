@@ -90,24 +90,24 @@ function selectDay(day: Date) {
 
 <template>
   <div class="month-view">
-    <div class="calender-header">
+    <div class="calendar-header">
       <LeftArrowIcon src="path/to/left-arrow.svg" @click="prevMonth" />
       <h2>{{ currentMonthName }} {{ currentYear }}</h2>
       <RightArrowIcon src="path/to/right-arrow.svg" @click="nextMonth" />
     </div>
 
-    <div class="calender-day-names">
-      <div v-for="(day, index) in dayNames" :key="index" class="calender-day-name">{{ day }}</div>
+    <div class="calendar-day-names">
+      <div v-for="(day, index) in dayNames" :key="index" class="calendar-day-name">{{ day }}</div>
     </div>
 
-    <div class="calender-grid">
+    <div class="calendar-grid">
       <div v-for="(weekNumber, weekIndex) in weekNumbers" :key="weekIndex" class="week-row">
         <div class="week-number">{{ weekNumber }}</div>
 
         <div
           v-for="(day, dayIndex) in daysInMonth.slice(weekIndex * 7, (weekIndex + 1) * 7)"
           :key="dayIndex"
-          class="calender-day"
+          class="calendar-day"
           :class="{ 'current-day': isToday(day), 'empty-day': day === null }"
           @click="day && selectDay(day)"
         >
@@ -130,14 +130,14 @@ function selectDay(day: Date) {
   box-sizing: border-box;
 }
 
-.calender-header {
+.calendar-header {
   display: flex;
   justify-content: space-between;
   width: 80%;
   margin-bottom: 20px;
 }
 
-.calender-day-names {
+.calendar-day-names {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   width: 75%;
@@ -147,7 +147,7 @@ function selectDay(day: Date) {
   margin-left: 50px;
 }
 
-.calender-grid {
+.calendar-grid {
   display: grid;
   grid-template-columns: auto repeat(7, 1fr);
   width: 80%;
@@ -166,7 +166,7 @@ function selectDay(day: Date) {
   width: 40px;
 }
 
-.calender-day {
+.calendar-day {
   width: 100%;
   height: 60px;
   display: flex;

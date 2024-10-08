@@ -1,4 +1,4 @@
-package com.example.actionproeve.models;
+package com.example.restservice.models;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;

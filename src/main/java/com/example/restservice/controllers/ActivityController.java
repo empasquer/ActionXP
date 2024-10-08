@@ -1,7 +1,5 @@
-package com.example.actionproeve.controllers;
+package com.example.restservice.controllers;
 
-import com.example.actionproeve.models.Activity;
-import com.example.actionproeve.services.ActivityService;
 
 
 import org.springframework.core.io.ClassPathResource;
@@ -12,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.restservice.models.Activity;
+import com.example.restservice.services.ActivityService;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -19,7 +20,7 @@ import java.nio.file.Paths;
 // Rest - retunerer json-data.
 @RestController
 // Siger at denne tillader min vue ap adgang til denne backend, men min back-end kører jo på 8080.
-@CrossOrigin (origins = "http://localhost:5173")
+@CrossOrigin (origins = "http://localhost:8080")
 
 public class ActivityController {
     private ActivityService activityService;

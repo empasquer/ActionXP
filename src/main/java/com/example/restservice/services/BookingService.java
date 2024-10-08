@@ -1,7 +1,7 @@
-package com.example.actionproeve.services;
+package com.example.restservice.services;
 
-import com.example.actionproeve.models.Booking;
-import com.example.actionproeve.repositories.BookingRepository;
+import com.example.restservice.models.Booking;
+import com.example.restservice.repositories.BookingRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

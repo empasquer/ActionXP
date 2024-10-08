@@ -1,9 +1,9 @@
-package com.example.actionproeve.controllers;
+package com.example.restservice.controllers;
 
-import com.example.actionproeve.models.Booking;
-import com.example.actionproeve.models.Employee;
-import com.example.actionproeve.services.BookingService;
-import com.example.actionproeve.services.EmployeeService;
+import com.example.restservice.models.Booking;
+import com.example.restservice.models.Employee;
+import com.example.restservice.services.BookingService;
+import com.example.restservice.services.EmployeeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

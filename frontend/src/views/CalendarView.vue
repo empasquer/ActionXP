@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import DayCalender from '@/components/DayCalender.vue'
-import MonthCalender from '@/components/MonthCalender.vue'
+import DayCalendar from '@/components/DayCalendar.vue'
+import MonthCalendar from '@/components/MonthCalendar.vue'
 import CreateActivityForm from '@/components/CreateActivityForm.vue'
 import TestHeader from '.././components/TestHeader.vue'
 import LoginForm from '@/components/LoginForm.vue'
@@ -57,11 +57,11 @@ const closeForm = () => {
     <CreateActivityForm v-if="formVisible" @exitForm="closeForm" />
   </div>
 
-  <div class="calender-container" :class="{ blurred: formVisible }">
+  <div class="calendar-container" :class="{ blurred: formVisible }">
     <div :class="{ blurred: isDayViewVisible }">
-      <MonthCalender @day-selected="showDayView" />
+      <MonthCalendar @day-selected="showDayView" />
     </div>
-    <DayCalender
+    <DayCalendar
       v-if="isDayViewVisible"
       :day="selectedDay"
       :events="selectedDayEvents"
@@ -73,7 +73,7 @@ const closeForm = () => {
 </template>
 
 <style scoped>
-.calender-container {
+.calendar-container {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,6 +1,5 @@
 import { RouterLink } from 'vue-router';
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <!-- <header></header>
@@ -9,11 +8,10 @@ import { RouterLink } from 'vue-router';
     <TodoList endpoint="http://127.0.0.1:8080/todo" />
   </main> -->
 
-    <header>
+  <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/add-activities">test</RouterLink>
-        <RouterLink to="/test-view">Login</RouterLink>
+        <RouterLink to="/calendar">Calendar</RouterLink>
       </nav>
     </div>
   </header>
