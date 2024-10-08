@@ -11,7 +11,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql:rw
     ports:
-      - "127.0.0.1:3306:3306" # Access DB from host at this port
+      - "127.0.0.1:3307:3306" # Access DB from host at this port
 
   todo-backend:
     build:

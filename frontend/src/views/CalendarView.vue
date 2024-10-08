@@ -4,34 +4,58 @@ import DayCalendar from '@/components/DayCalendar.vue'
 import MonthCalendar from '@/components/MonthCalendar.vue'
 import CreateActivityForm from '@/components/CreateActivityForm.vue'
 import TestHeader from '.././components/TestHeader.vue'
-import LoginForm from '@/components/LoginForm.vue'
+import axios from 'axios'
 
-//Placeholder for bookings
+// Placeholder for bookings
 interface Event {
   title: string
   startTime: string
   endTime: string
 }
 
-//Define refs for the selected day and events
+// Define refs for the selected day and events
 const selectedDay = ref<Date | null>(null)
 const selectedDayEvents = ref<Event[]>([])
 const isDayViewVisible = ref(false)
 
-//Methods to show and close the day view
-function showDayView(day: Date) {
+// Methods to show and close the day view
+async function showDayView(day: Date | null) {
+  if (!day) {
+    console.error('Invalid date passed to showDayView.')
+    return
+  }
+
   selectedDay.value = day
-  selectedDayEvents.value = [] // Fetch events for the selected day if needed
   isDayViewVisible.value = true
-  ;(document.querySelector('.month-view') as HTMLElement).classList.add('blurred')
+
+  // Add a check to ensure this element exists before trying to manipulate it
+  const monthViewElement = document.querySelector('.month-view') as HTMLElement
+  if (monthViewElement) {
+    monthViewElement.classList.add('blurred')
+  }
+
+  // Fetch events for the selected day
+  try {
+    const formattedDate = `${day.getFullYear()}-${String(day.getMonth() + 1).padStart(2, '0')}-${String(day.getDate()).padStart(2, '0')}`
+    console.log('Fetching events for:', formattedDate)
+    const response = await axios.get(`http://localhost:8080/api/bookings/day`, {
+      params: { date: formattedDate }
+    })
+    selectedDayEvents.value = response.data // Assuming the response is an array of Event objects
+  } catch (error) {
+    console.error('Error fetching events:', error)
+  }
 }
 
 function closeDayView() {
   isDayViewVisible.value = false
-  ;(document.querySelector('.month-view') as HTMLElement).classList.remove('blurred')
+  const monthViewElement = document.querySelector('.month-view') as HTMLElement
+  if (monthViewElement) {
+    monthViewElement.classList.remove('blurred')
+  }
 }
 
-//Add-activities things:
+// Add-activities things:
 // Reactive reference for form visibility
 const formVisible = ref(false) // Initially set to false
 
@@ -49,7 +73,6 @@ const closeForm = () => {
 </script>
 
 <template>
-  <!-- <LoginForm/> -->
   <header>
     <TestHeader @dropdown-select="handleDropdownSelect" />
   </header>
@@ -108,10 +131,12 @@ const closeForm = () => {
   height: 100vh;
   z-index: 200;
 }
+
 header {
   width: 100vh;
   height: auto;
 }
+
 template {
   display: flex;
   flex-direction: column;
