@@ -1,7 +1,7 @@
-package com.example.restservice;
+// package com.example.restservice;
 
-public enum TodoStatus {
-    Pending,
-    InProgress,
-    Completed,
-}
+// public enum TodoStatus {
+//     Pending,
+//     InProgress,
+//     Completed,
+// }

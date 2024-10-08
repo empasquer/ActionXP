@@ -37,7 +37,7 @@ services:
       MYSQL_USER: kea
       MYSQL_PASSWORD: kea
       MYSQL_HOST: db
-    
+
     # En volume er Docker-sprog for et filsystem.
     #
     # Ligesom en Docker-container har sin egen IP-adresse, har den også sit eget virtuelle
@@ -81,7 +81,7 @@ services:
     # Også selvom den er password-beskyttet, for passwords kan meget nemt brydes.
     ports:
       # Sikkert:
-      - "127.0.0.1:3306:3306"
+      - "127.0.0.1:3307:3307"
       # Usikkert:
       # - "3306:3306"
 

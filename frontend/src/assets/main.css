@@ -1,26 +1,38 @@
 @import './base.css';
+:root {
+  --action-blue: #00aeff;
+  --action-red: #e83a00;
+  --action-yellow: #ffcf00;
+  --action-white: #fdfffb;
+  --action-black: #030003;
 
-#app {
-  max-width: 1280px;
+  --bg-color-dark: #1f2023;
+
+  --text-color-light: #d7d6d6;
+}
+
+/* skygge under logo */
+.logo {
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.9));
+}
+
+html {
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   font-weight: normal;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+body {
+  color: var(--text-color-light);
+  background-color: var(--bg-color-dark);
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+img {
+  width: 100%;
+  height: 100%;
 }
 
+/* for responsivitet -- idk om vi skal bruge det hehe så jge lader det bare blive */
 @media (min-width: 1024px) {
   body {
     display: flex;
@@ -28,8 +40,9 @@ a,
   }
 
   #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    display: flex;
+    width: 100%; /*Laver header fravæg til væg, men nok
+    irriterende med alle andre apps*/
+
   }
 }
