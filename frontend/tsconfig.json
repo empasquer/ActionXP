@@ -10,7 +10,8 @@
     "resolveJsonModule": true, // Allow JSON imports
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "types": ["vitest/globals"] // Add this line
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "vite-env.d.ts"],

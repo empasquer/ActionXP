@@ -1,24 +1,29 @@
 import { mount } from '@vue/test-utils'
-import TestView from '../../views/test-view.vue'
-import CreateActivityForm from '@/components/CreateActivityForm.vue'
+import TestHeader from '@/components/TestHeader.vue' // Adjust the path as necessary
+import BaseNavigation from '.././BaseNavigation.vue';
 import { describe, expect, it } from 'vitest'
 
-describe('testview.vue', () => {
-  it('renders Add New Acitivy Button'),
-    () => {
-      const wrapper = mount(TestView)
-      expect(wrapper.find('button').text()).toBe('Add New Activity')
-    }
-  it('should display the CreateActivityForm when the button is clicked', async () => {
-    const wrapper = mount(TestView)
+describe('TestHeader.vue', () => {
+  it('renders the header with navigation items', () => {
+    const wrapper = mount(TestHeader)
+    
+    // Check if the header contains the logo
+    expect(wrapper.find('.logo img').exists()).toBe(true)
+    
+    // Check if the navigation item exists
+    expect(wrapper.find('.nav-section').text()).toContain('Activities')
+  })
 
-    // Initially, the form is not visible
-    expect(wrapper.findComponent(CreateActivityForm).exists()).toBe(false)
+  it('shows the CreateActivityForm when "Add Activity" is selected from the dropdown', async () => {
+    const wrapper = mount(TestHeader)
 
-    // Click the button
-    await wrapper.find('button').trigger('click')
+    // Initially, formVisible should be false
+    expect(wrapper.vm.formVisible).toBe(false)
 
-    // The form should now be visible
-    expect(wrapper.findComponent(CreateActivityForm).exists()).toBe(true)
+    // Simulate the dropdown selection
+    await wrapper.findComponent(BaseNavigation).vm.$emit('dropdown-select', 'add-activity')
+
+    // After the selection, formVisible should be true
+    expect(wrapper.vm.formVisible).toBe(true)
   })
 })

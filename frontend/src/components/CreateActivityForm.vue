@@ -5,17 +5,21 @@ import BaseButton from './BaseButton.vue';
 import axios from 'axios';
 
 const emit = defineEmits(['exitForm']);
-const currentSlide = ref(1);
-const activityName = ref('');
-const activityTimes = ref('');
-const activityDescription = ref('');
-const activityImage = ref('');
-const submitted = ref(false);
+const currentSlide = ref<number>(1);
+const activityName = ref<string>('');
+const activityTimes = ref<string>('');
+const activityDescription = ref<string>('');
+const activityImage = ref<string>('');
+const submitted = ref<boolean>(false);
+
+const setCurrentSlide = (slide: number) => {
+  currentSlide.value = slide;
+};
 
 function nextSlide() {
   currentSlide.value += 1;
 }
-
+ 
 async function handleSubmit() {
   const timesArray = activityTimes.value.split(',')
     .map(time => parseFloat(time.trim()))
@@ -52,6 +56,7 @@ function resetForm() {
   activityTimes.value = '';
   activityImage.value = ''; 
   submitted.value = false; 
+  
 }
 </script>
 
