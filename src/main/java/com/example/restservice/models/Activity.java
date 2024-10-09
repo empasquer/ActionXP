@@ -9,7 +9,6 @@ public class Activity {
     private String information;
     private String image;
 
-
     public Activity() {
     }
 
