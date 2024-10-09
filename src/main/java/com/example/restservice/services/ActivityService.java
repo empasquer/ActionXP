@@ -20,6 +20,7 @@ public class ActivityService {
     }
 
     public void saveActivity(Activity activity, String filePath) {
+        System.out.println("reached service");
         try {
             List<Activity> activities = readActivitiesFromFile(filePath);
             activities.add(activity);
@@ -30,6 +31,7 @@ public class ActivityService {
     }
 
     public List<Activity> readActivitiesFromFile(String filePath) throws IOException {
+        System.out.println("reached readactitivies");
         File file = new File(filePath);
         if (file.exists() && file.length() > 0) {
             // Use TypeReference to read the JSON file into a List<Activity>
@@ -41,6 +43,7 @@ public class ActivityService {
     }
 
     private void writeActivitiesToFile(List<Activity> activities, String filePath) {
+        System.out.println("reached writeActivities");
         try {
             objectMapper.writeValue(new File(filePath), activities);
         } catch (IOException e) {
